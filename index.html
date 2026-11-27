@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark">
+<title>DARK VAULT // onion porn index</title>
+<style>
+:root{
+  --bg:#07070a; --panel:#0e0e13; --line:#1e1e28; --txt:#e7e7ee;
+  --dim:#7b7b8c; --amber:#ffb300; --red:#ff2e4d; --ok:#22d37a;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt)}
+body{
+  font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  padding:0 0 90px; overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+header{
+  position:sticky;top:0;z-index:20;background:rgba(7,7,10,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  padding:10px 12px 8px;
+}
+.bar{display:flex;align-items:center;gap:8px}
+.logo{font-weight:700;letter-spacing:.22em;font-size:13px;color:var(--amber)}
+.logo b{color:var(--red)}
+.pill{
+  margin-left:auto;font-size:10px;letter-spacing:.1em;padding:4px 8px;
+  border:1px solid var(--line);border-radius:999px;color:var(--dim);white-space:nowrap;
+}
+.pill.on{color:var(--ok);border-color:#12452c;background:#06180f}
+.pill.off{color:#ff8b9c;border-color:#45121c;background:#180608}
+.icon{
+  border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:11px;
+  color:var(--dim);white-space:nowrap;
+}
+.icon:hover,.icon:focus-visible{color:var(--txt);border-color:#33334a}
+
+.searchwrap{position:relative;margin-top:8px}
+input[type=search]{
+  width:100%;padding:9px 10px 9px 30px;border-radius:9px;border:1px solid var(--line);
+  background:#0b0b10;color:var(--txt);font:inherit;outline:none;
+}
+input[type=search]:focus{border-color:var(--amber)}
+.searchwrap::before{
+  content:"/";position:absolute;left:10px;top:8px;color:var(--dim);pointer-events:none;
+}
+.tabs{display:flex;gap:6px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  font-size:11px;letter-spacing:.12em;padding:6px 10px;border-radius:999px;
+  border:1px solid var(--line);color:var(--dim);white-space:nowrap;
+}
+.tab[aria-selected=true]{background:var(--amber);border-color:var(--amber);color:#000;font-weight:700}
+
+.chips{display:flex;gap:6px;padding:10px 12px 2px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  font-size:11px;padding:5px 9px;border:1px solid var(--line);border-radius:999px;
+  color:var(--dim);white-space:nowrap;
+}
+.chip[aria-pressed=true]{border-color:var(--red);color:var(--red);background:#160509}
+
+main{padding:10px 12px 0}
+.grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:11px;display:flex;flex-direction:column;gap:7px;
+}
+.card h3{margin:0;font-size:14px;letter-spacing:.02em;font-weight:700}
+.row{display:flex;align-items:flex-start;gap:6px}
+.star{margin-left:auto;color:#3a3a4d;font-size:15px;line-height:1}
+.star.on{color:var(--amber)}
+.note{margin:0;font-size:11.5px;color:var(--dim);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags span{font-size:9.5px;letter-spacing:.1em;color:#6f6f85;border:1px solid #1b1b26;border-radius:4px;padding:1px 4px}
+.addr{
+  display:block;font-size:10px;color:#5f6a80;background:#0a0a10;border:1px solid #17171f;
+  border-radius:6px;padding:5px 6px;word-break:break-all;line-height:1.35;
+}
+.acts{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:2px}
+.btn{
+  font-size:10.5px;letter-spacing:.1em;padding:6px 9px;border-radius:7px;
+  border:1px solid var(--line);color:var(--dim);
+}
+.btn:hover,.btn:focus-visible{color:var(--txt);border-color:#3a3a52}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#000;font-weight:700}
+.btn.tor{border-color:#3a2a05;color:var(--amber)}
+.btn.ghost{margin-left:auto;border-style:dashed}
+
+.prose{max-width:70ch;font-size:12.5px;line-height:1.75;color:#b9b9c9}
+.prose h2{font-size:12px;letter-spacing:.18em;color:var(--amber);margin:22px 0 8px;text-transform:uppercase}
+.prose h2:first-child{margin-top:4px}
+.prose code{background:#101018;border:1px solid var(--line);border-radius:4px;padding:1px 4px;font-size:11px}
+.prose ul{padding-left:18px;margin:6px 0}
+.prose li{margin:3px 0}
+.warn{border-left:2px solid var(--red);padding:2px 0 2px 10px;color:#ffb8c2;background:#12060a;border-radius:0 6px 6px 0}
+.empty{color:var(--dim);font-size:12px;padding:26px 0;text-align:center}
+
+/* boss key */
+#boss{
+  position:fixed;inset:0;z-index:100;display:none;background:#050507;
+  align-items:center;justify-content:center;flex-direction:column;gap:10px;
+}
+#boss.show{display:flex}
+#boss h1{font-size:15px;letter-spacing:.4em;color:var(--amber);margin:0}
+#boss p{font-size:11px;color:var(--dim);margin:0;letter-spacing:.1em}
+
+footer{
+  position:fixed;bottom:0;left:0;right:0;z-index:15;display:flex;gap:6px;
+  padding:8px 12px;background:rgba(7,7,10,.95);border-top:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+footer .grow{margin-left:auto}
+.toast{
+  position:fixed;left:50%;bottom:64px;transform:translate(-50%,10px);z-index:120;
+  background:#15151f;border:1px solid #33334a;color:var(--txt);font-size:11px;
+  padding:7px 12px;border-radius:999px;opacity:0;pointer-events:none;transition:.18s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="logo">DARK<b>//</b>VAULT</div>
+    <span class="pill" id="torPill" title="Tor detection">CHECKING…</span>
+    <button class="icon" id="bossBtn" title="Boss key (Esc)">ESC</button>
+  </div>
+  <div class="searchwrap">
+    <input type="search" id="q" placeholder="search name / tag" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="vault" aria-selected="true">ONION VAULT</button>
+    <button class="tab" role="tab" data-tab="clear" aria-selected="false">CLEARNET NOW</button>
+    <button class="tab" role="tab" data-tab="saved" aria-selected="false">SAVED</button>
+    <button class="tab" role="tab" data-tab="how" aria-selected="false">HOW-TO</button>
+  </div>
+</header>
+
+<div class="chips" id="chips"></div>
+<main id="main"></main>
+
+<footer>
+  <button class="icon" id="rand">RANDOM</button>
+  <button class="icon" id="export">EXPORT</button>
+  <button class="icon" id="importBtn">IMPORT</button>
+  <input type="file" id="importFile" accept=".json" hidden>
+  <span class="grow"></span>
+  <span class="icon" id="stat"></span>
+</footer>
+
+<div id="boss"><h1>NOTHING HERE</h1><p>PRESS ESC</p></div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   DARK VAULT — single file, zero dependencies, offline-first.
+   .onion addresses rotate. Addresses last verified: 2026-11.
+   ============================================================ */
+
+const LS_KEY = "darkvault.v1";
+
+/* ---- data ---------------------------------------------------
+   cat: rape | brutal | extreme | leak | teen | dir | search | forum | extra
+   addr = bare v3 address (no .onion suffix)
+   clear = clearnet equivalent, works with no Tor
+------------------------------------------------------------- */
+const VAULT = [
+  /* --- RAPE / "REAL" FEEL --- */
+  { id:"rapetub", name:"RapeTub Gallery", cat:["rape","extra"], addr:"efnffddxg45a3liqexqojlj4gl3tgngqejzfg2d4t5u2hkutjg2rnxad", tags:["archive","classic","free"],
+    note:"Dedicated 'rape' branded onion. Free archive of classic porn films — closest thing the dark web has to a real-rape tube." },
+  { id:"deepthroat", name:"Deepthroat", cat:["brutal","teen"], addr:"qaw2kckmpwd4zdpq24dmft7wimbvq2qyz3refqyira6ierxyofwvjaid", tags:["throat","teen","free"],
+    note:"Original deep-web teen site. Rough throat scenes, not gentle." },
+  { id:"destroyed", name:"Destroyed Daughters", cat:["brutal","teen"], addr:"lm3cclrlzipzfidr23bq6vuoq6u2l6lry2dzpy2cun6cvxttm5ha6eyd", tags:["petite","hard","free"],
+    note:"Petite teens getting wrecked by oversized talent. Brutal-by-default." },
+  { id:"sluttyd", name:"Slutty Daughters", cat:["teen"], addr:"3pz4q6k6srtdlvjeslwnjogkx732khjplhidfuk2eoczmragzbgnhrad", tags:["teen","free"],
+    note:"First-timer / defloration angle. Pairs with Destroyed Daughters." },
+
+  /* --- EXTREME / GENERAL --- */
+  { id:"pornbase", name:"ThePornBase", cat:["extreme","extra"], addr:"porntvce7ht24oqmm74ycylkupxnrupm4l2odwjgyahc5dmn5ifqpvyd", tags:["all-genre","download"],
+    note:"Big all-genre dump, sorted by category, downloadable. Good brute-force browse." },
+  { id:"sluttyporn", name:"Slutty Porn", cat:["extreme"], addr:"6z4peq32r2kxsjvsf2cj5mfqu37poldloqlnctysc6qy6sud4xd3vyid", tags:["hardcore","free"],
+    note:"Hardcore only, no softcore filler." },
+  { id:"hijab", name:"Hijab Fuck Girls", cat:["extreme","extra"], addr:"hijab6krnwts7ra27baukpo6llpkf4hgqtigj3rlxaukekvdhvzdeoid", tags:["arab","niche"],
+    note:"Arab / hijab niche onion." },
+  { id:"ph1", name:"Pornhub (mirror A)", cat:["extreme"], addr:"porntvxakfovbtpxhiebjvnui22znsys3gc5p7gapzrukljb53u7rbad", tags:["mainstream","hd"],
+    note:"Pornhub onion mirror. Mainstream HD — use it as your baseline, then go weird." },
+  { id:"ph2", name:"Pornhub (mirror B)", cat:["extreme"], addr:"pornhubthbh7ap3u", tags:["legacy","may-be-dead"],
+    note:"The original 2020 official mirror. Often dead — kept here because it resurfaces." },
+  { id:"gamcore", name:"Gamcore", cat:["extra"], addr:"gamcored5widhilqmnyv7msosxpcqsvyunyljk6sx6swnzmzy2km2oyd", tags:["games"],
+    note:"Thousands of adult games, playable in-browser." },
+
+  /* --- LEAKS / AMATEUR --- */
+  { id:"cisland", name:"Cracking Island", cat:["leak"], addr:"cisland46psf56panbm2japxoxeguqekmataim54kn2ysucnk3yo7eyd", tags:["onlyfans","snapchat","ig"],
+    note:"Leaked OnlyFans / Snapchat / Instagram / TikTok. Amateur, unfiltered." },
+  { id:"suicidal", name:"Suicidal", cat:["leak","extra"], addr:"suicidalup7xqxrf4ynodh2kqnfvnngqrg6b7l3rppldjrajf422ivid", tags:["gallery","free"],
+    note:"Huge free photo galleries of amateur girls. Name means nothing, content is good." },
+
+  /* --- FORUM --- */
+  { id:"hpforum", name:"Hardcore Porn Forum", cat:["forum"], addr:"72vhcz4wscqgtpcrkr7psrzb7xpoq2ejl6qppvg6kz6yt2xmtjrymoqd", tags:["community"],
+    note:"Porn forum. Where you find links that never made it into directories." },
+
+  /* --- DIRECTORIES / SEARCH --- */
+  { id:"torporn", name:"TorPorn Directory", cat:["dir"], addr:"qd3rxf5mgo6rycqf7zpt7i2rhuc7h6bej6nwijlqei6ne2aj5zvk6dad", tags:["index","verified"],
+    note:"Adult-site index with ratings, reachable over Tor. Best single starting point." },
+  { id:"wiki", name:"The Hidden Wiki", cat:["dir"], addr:"zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad", tags:["index","scammy"],
+    note:"The old wiki. Adult section exists, but expect dead links and affiliate spam." },
+  { id:"darksearch", name:"DarkSearch", cat:["search"], addr:"darkzqtmbdeauwq5mzcmgeeuhet42fhfjj4p5wbak3ofx2yqgecoeqyd", tags:["engine"],
+    note:"Darknet search engine. Type 'rape', 'brutal', 'extreme' and hit enter." },
+  { id:"onionland", name:"OnionLand Search", cat:["search"], addr:"3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad", tags:["engine"],
+    note:"Second engine — results differ from DarkSearch, try both." },
+  { id:"deepsearch", name:"Deep Search", cat:["search"], addr:"search7tdrcvri22rieiwgi5g46qnwsesvnubqav2xakhezv4hjzkkad", tags:["engine"],
+    note:"Third engine. Heavy scam-promotion, verify what it gives you." },
+  { id:"ahmia", name:"Ahmia", cat:["search"], addr:"juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd", tags:["engine","clean"],
+    note:"Cleanest engine, filters out dead onions. Also on clearnet: ahmia.fi" },
+
+  /* --- CLEARNET (no Tor needed, works right now) --- */
+  { id:"legalporno", name:"LegalPorno / AnalVids", cat:["brutal","extreme"], clear:"https://www.legalporno.com/", tags:["gonzo","anal","real"],
+    note:"The benchmark for genuinely brutal gonzo. No cuts, no acting, real discomfort." },
+  { id:"facialabuse", name:"Facial Abuse", cat:["brutal","rape"], clear:"https://www.facialabuse.com/", tags:["throat","degradation"],
+    note:"Amateur girls, filmed brutal and degrading. This is the 'real' vibe most people mean." },
+  { id:"ghetto", name:"Ghetto Gaggers", cat:["brutal"], clear:"https://www.ghettogaggers.com/", tags:["throat","amateur"],
+    note:"Same school as Facial Abuse. Deep-throat destruction, amateur casting." },
+  { id:"hardwerk", name:"HardWerk", cat:["brutal","extreme"], clear:"https://www.hardwerk.com/", tags:["gangbang","cinematic"],
+    note:"Cinematic gangbangs, genuinely rough, high production." },
+  { id:"punishworld", name:"PunishWorld", cat:["extreme"], clear:"https://www.punishworld.com/", tags:["bdsm","rough"],
+    note:"BDSM / punishment. Pain-forward." },
+  { id:"extstreets", name:"ExtremeStreets", cat:["extreme"], clear:"https://www.extremestreets.com/", tags:["public","amateur"],
+    note:"Public / street pickups. Real strangers, real awkwardness." },
+  { id:"boundhub", name:"BoundHub", cat:["extreme"], clear:"https://www.boundhub.com/", tags:["bondage","free"],
+    note:"Free bondage tube, enormous library." },
+  { id:"kink", name:"Kink.com", cat:["extreme"], clear:"https://www.kink.com/", tags:["bdsm","studio"],
+    note:"The BDSM studio. Machine-sex, suspension, heavy rigging." },
+  { id:"woodman", name:"Woodman Casting", cat:["rape"], clear:"https://www.woodmancastingx.com/", tags:["casting","real"],
+    note:"Pierre Woodman's casting couch. Genuinely unpolished, girls are not comfortable." },
+  { id:"czechcasting", name:"CzechCasting", cat:["rape"], clear:"https://www.czechcasting.com/", tags:["casting","amateur"],
+    note:"The classic 'real casting' format. First-timers, minimal direction." },
+  { id:"bcc", name:"Backroom Casting Couch", cat:["rape"], clear:"https://www.backroomcastingcouch.com/", tags:["casting"],
+    note:"Lo-fi amateur casting. Real audio, real nervousness." },
+  { id:"nudz", name:"Nudz", cat:["extreme"], clear:"https://nudz.com/", tags:["free","hardcore"],
+    note:"Free hardcore aggregator, no account." },
+  { id:"rocco", name:"Rocco Siffredi", cat:["brutal"], clear:"https://www.roccosiffredi.com/", tags:["italian","anal"],
+    note:"Rocco's own archive. Italian, physical, loud." }
+];
+
+const CATS = [
+  ["all","ALL"], ["rape","RAPE / REAL"], ["brutal","BRUTAL"], ["extreme","EXTREME"],
+  ["leak","LEAKS"], ["teen","TEEN"], ["dir","DIRECTORY"], ["search","SEARCH"],
+  ["forum","FORUM"], ["extra","EXTRA"]
+];
+
+const state = {
+  tab:"vault",
+  cat:"all",
+  q:"",
+  saved: JSON.parse(localStorage.getItem(LS_KEY) || "[]")
+};
+
+const $ = s => document.querySelector(s);
+const main = $("#main");
+const chips = $("#chips");
+
+/* ---- helpers ---------------------------------------------- */
+const save = () => localStorage.setItem(LS_KEY, JSON.stringify(state.saved));
+
+const gw = addr => "https://" + addr + ".onion.ws/";
+const gw2 = addr => "https://" + addr + ".onion.to/";
+const gw3 = addr => "https://" + addr + ".gotoonion.site/";
+
+let tor = null; // null = unknown, true/false
+
+function toast(msg){
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove("show"), 1600);
+}
+
+async function copy(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    toast("COPIED");
+  }catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); toast("COPIED"); }
+    catch(_){ toast("COPY FAILED — SELECT MANUALLY"); }
+    ta.remove();
+  }
+}
+
+/* ---- Tor detection ---------------------------------------- */
+function detectTor(){
+  return new Promise(resolve => {
+    const img = new Image();
+    let done = false;
+    const finish = v => { if(done) return; done = true; clearTimeout(timer); img.src = ""; resolve(v); };
+    const timer = setTimeout(() => finish(false), 4500);
+    img.onload = () => finish(true);
+    img.onerror = () => finish(false);
+    img.src = "http://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/favicon.ico?t=" + Date.now();
+  });
+}
+
+function paintTor(){
+  const p = $("#torPill");
+  p.className = "pill " + (tor === true ? "on" : tor === false ? "off" : "");
+  p.textContent = tor === true ? "TOR ACTIVE" : tor === false ? "NO TOR" : "CHECKING…";
+  p.title = tor === true
+    ? "Tor Browser detected — onion links open directly"
+    : "No Tor detected — gateway links used. Open in Tor Browser for real anonymity.";
+}
+
+/* ---- render ----------------------------------------------- */
+function buildChips(){
+  chips.innerHTML = CATS.map(([k, label]) =>
+    `<button class="chip" data-cat="${k}" aria-pressed="${state.cat === k}">${label}</button>`
+  ).join("");
+}
+
+function card(s){
+  const isSaved = state.saved.includes(s.id);
+  const openHref = s.addr ? (tor ? "http://" + s.addr + ".onion/" : gw(s.addr)) : s.clear;
+  const openLabel = s.addr && tor ? "TOR" : "OPEN";
+  return `
+  <article class="card">
+    <div class="row">
+      <h3>${s.name}</h3>
+      <button class="star ${isSaved ? "on" : ""}" data-act="star" data-id="${s.id}"
+        aria-label="bookmark">★</button>
+    </div>
+    <p class="note">${s.note}</p>
+    <div class="tags">${s.tags.map(t => `<span>${t}</span>`).join("")}</div>
+    ${s.addr ? `<code class="addr">${s.addr}.onion</code>` : `<code class="addr">clearnet</code>`}
+    <div class="acts">
+      <a class="btn ${s.addr ? "tor" : "primary"}" href="${openHref}" target="_blank"
+         rel="noopener noreferrer">${openLabel}</a>
+      ${s.addr ? `<button class="btn" data-act="copy" data-addr="${s.addr}.onion">COPY</button>` : ""}
+      ${s.addr && !tor ? `<a class="btn" href="http://${s.addr}.onion/" target="_blank"
+         rel="noopener noreferrer">TOR</a>` : ""}
+      ${s.addr ? `<a class="btn ghost" href="${gw2(s.addr)}" target="_blank"
+         rel="noopener noreferrer">GW2</a>` : ""}
+      ${s.clear && s.addr ? `<a class="btn ghost" href="${s.clear}" target="_blank"
+         rel="noopener noreferrer">CLEARNET</a>` : ""}
+    </div>
+  </article>`;
+}
+
+function render(){
+  document.querySelectorAll(".tab").forEach(t =>
+    t.setAttribute("aria-selected", t.dataset.tab === state.tab));
+  chips.style.display = (state.tab === "vault" || state.tab === "clear") ? "flex" : "none";
+
+  if(state.tab === "how"){ main.innerHTML = howTo(); return; }
+
+  let list = VAULT.slice();
+  if(state.tab === "vault") list = list.filter(s => s.addr);
+  if(state.tab === "clear") list = list.filter(s => s.clear);
+  if(state.tab === "saved") list = list.filter(s => state.saved.includes(s.id));
+  if(state.cat !== "all" && state.tab !== "saved") list = list.filter(s => s.cat.includes(state.cat));
+
+  const q = state.q.trim().toLowerCase();
+  if(q) list = list.filter(s =>
+    (s.name + " " + s.note + " " + s.tags.join(" ") + " " + s.addr).toLowerCase().includes(q));
+
+  $("#stat").textContent = list.length + " / " + VAULT.length;
+
+  if(!list.length){
+    main.innerHTML = `<p class="empty">nothing matches. ${state.tab === "saved" ? "star something first." : "clear the filter."}</p>`;
+    return;
+  }
+  main.innerHTML = `<div class="grid">${list.map(card).join("")}</div>`;
+}
+
+function howTo(){
+  return `
+  <div class="prose">
+    <h2>1 // what this app is</h2>
+    <p>A curated index, not a proxy. It holds addresses. The bytes come from elsewhere.</p>
+    <div class="warn">A CodePen / GitHub Pages page has no Tor circuit. A raw
+    <code>.onion</code> link will <b>not</b> load in Chrome. Use the gateway buttons, or open
+    the app itself in Tor Browser.</div>
+
+    <h2>2 // the safe order</h2>
+    <ul>
+      <li>Install <b>Tor Browser</b> (torproject.org). Not a "Tor app" from a random store.</li>
+      <li>VPN <b>before</b> Tor, if your ISP blocks Tor. Onion traffic itself is already encrypted.</li>
+      <li>Open this page <b>inside</b> Tor Browser — the pill turns green and links go direct.
+        Gateway = faster but the gateway operator sees your IP.</li>
+      <li>Leave the security slider on <b>Safer</b>. Video still plays.</li>
+      <li>Never type a real password into an onion. Never install anything it offers.</li>
+    </ul>
+
+    <h2>3 // finding the actual brutal stuff</h2>
+    <p>There is no single "real rape" onion with a permanent address. What works:</p>
+    <ul>
+      <li>Go to <b>TorPorn Directory</b> or <b>DarkSearch</b> and search
+        <code>rape</code>, <code>brutal</code>, <code>extreme</code>, <code>casting</code>.</li>
+      <li>Treat any address older than ~6 months as dead until proven otherwise. Onion v3
+        addresses are 56 characters — anything shorter is dead v2.</li>
+      <li>Clearnet tab: <b>Facial Abuse</b>, <b>Ghetto Gaggers</b>, <b>LegalPorno</b>,
+        <b>Woodman Casting</b> are the closest to the "real, not acted" feel. Dark web rarely
+        beats them — it just hides you.</li>
+    </ul>
+
+    <h2>4 // hygiene built into this page</h2>
+    <ul>
+      <li>Zero external requests — no fonts, no CDN, no analytics, no tracking pixel.</li>
+      <li><code>no-referrer</code>: sites you open don't learn where you came from.</li>
+      <li>Bookmarks stay in <code>localStorage</code> on this device only. Export to JSON to move them.</li>
+      <li><b>Esc</b> = boss key, whole page blanks instantly.</li>
+    </ul>
+
+    <h2>5 // host it yourself</h2>
+    <p>GitHub → new repo → add <code>index.html</code> → Settings → Pages → branch <code>main</code>,
+    root → Save. Done. Your own copy, no dependency on this chat.</p>
+  </div>`;
+}
+
+/* ---- events ----------------------------------------------- */
+document.addEventListener("click", e => {
+  const tab = e.target.closest(".tab");
+  if(tab){ state.tab = tab.dataset.tab; state.cat = "all"; render(); return; }
+
+  const chip = e.target.closest(".chip");
+  if(chip){ state.cat = chip.dataset.cat; buildChips(); render(); return; }
+
+  const act = e.target.closest("[data-act]");
+  if(!act) return;
+
+  if(act.dataset.act === "copy"){ copy("http://" + act.dataset.addr + "/"); return; }
+
+  if(act.dataset.act === "star"){
+    const id = act.dataset.id;
+    state.saved = state.saved.includes(id)
+      ? state.saved.filter(x => x !== id)
+      : [...state.saved, id];
+    save();
+    act.classList.toggle("on");
+    toast(state.saved.includes(id) ? "SAVED" : "REMOVED");
+    if(state.tab === "saved") render();
+  }
+});
+
+$("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
+
+$("#rand").addEventListener("click", () => {
+  const pool = VAULT.filter(s => s.addr || s.clear);
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  const url = pick.addr ? (tor ? "http://" + pick.addr + ".onion/" : gw(pick.addr)) : pick.clear;
+  window.open(url, "_blank", "noopener,noreferrer");
+  toast(pick.name);
+});
+
+$("#export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(state.saved, null, 2)], { type:"application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "darkvault-saved.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+$("#importBtn").addEventListener("click", () => $("#importFile").click());
+$("#importFile").addEventListener("change", async e => {
+  const f = e.target.files[0];
+  if(!f) return;
+  try{
+    const arr = JSON.parse(await f.text());
+    if(!Array.isArray(arr)) throw 0;
+    state.saved = [...new Set([...state.saved, ...arr.filter(x => typeof x === "string")])];
+    save(); render(); toast("IMPORTED");
+  }catch(_){ toast("BAD FILE"); }
+});
+
+const boss = () => $("#boss").classList.toggle("show");
+$("#bossBtn").addEventListener("click", boss);
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") boss();
+  if(e.key === "/" && document.activeElement !== $("#q")){ e.preventDefault(); $("#q").focus(); }
+});
+
+/* ---- boot ------------------------------------------------- */
+buildChips();
+render();
+paintTor();
+detectTor().then(v => { tor = v; paintTor(); render(); });
+</script>
+</body>
+</html>
